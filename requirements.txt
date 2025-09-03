@@ -1,0 +1,8 @@
+catboost
+matplotlib
+numpy
+pandas
+polars
+pyarrow
+scikit-learn
+tqdm
