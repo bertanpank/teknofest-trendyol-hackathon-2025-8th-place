@@ -12,7 +12,7 @@ Amaç: Her oturumda, ürünlerin tıklanma ve sipariş alma ihtimallerini gözet
 
 Kullanılan ana kütüphaneler: Polars, Pandas, Catboost
 
-**1) Preprocessing:**
+**1) Preprocessing**
 Bu aşamada verilen datadan maksimum verimi alabilmek için oldukça farklı türde özellik çıkarımları uyguladık. Sonrasında sürekli sabit olan veya leak yaratan özelliklerimizi setten çıkardık. Yarattığımız özellik tipleri ve bazı örnekleri:
 
 - Ürün (content) seviyesi toplulaştırmalar (ortalama/medyan/std/cv)
@@ -36,7 +36,7 @@ Bu aşamada verilen datadan maksimum verimi alabilmek için oldukça farklı tü
 - İki aileli modelleme: Tıklama ve Sipariş için tek bir model oluşturmak yerine modelleri ayrı eğitmeye karar verdik. Böylece iki modeli de ayrı ayrı optimize ederek genel bir skor artışı sağlayabildik.
 
 - Model tercihi CatBoost): Büyük veride yoğun kategorik alanlardan güçlü sinyal çıkarabildiği, hızlı ve kullanımı kolay olduğu için temel model olarak CatBoostRanker) kullandık. CatBoost’un kategorikleri yerleşik olarak işlemesi sayesinde ek karmaşık ön-işleme ihtiyacı azaldı; varsayılan ayarlarla bile istikrarlı sonuç verdi.
-> Not: XGBoost ve **LightGBM kurulumu/ayarı (özellikle kategorik hazırlığı ve GPU yapılandırması)*CatBoost’a göre çok daha uğraştırıcıydı. Zaman kısıtı olmasaydı, ikisini de aynı doğrulama düzenine alıp ağırlık optimizasyonuna dahil edecek şekilde akışımıza eklerdik.
+> Not: XGBoost ve LightGBM kurulumu/ayarı (özellikle kategorik hazırlığı ve GPU yapılandırması) CatBoost’a göre çok daha uğraştırıcıydı. Zaman kısıtı olmasaydı, ikisini de aynı doğrulama düzenine alıp ağırlık optimizasyonuna dahil edecek şekilde akışımıza eklerdik.
 
 - Eğitim seti seçimi: Yarışma metriğine uygun kayıp fonksiyonunun doğru hesaplanabilmesi için, iki ayrı model farklı oturum verileri kullanılarak eğitildi.
   - ORDER modeli: Yalnızca en az bir sipariş içeren oturumlar  
